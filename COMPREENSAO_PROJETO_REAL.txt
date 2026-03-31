@@ -1,0 +1,44 @@
+=========================================================
+VISÃO GERAL ABSOLUTA DO PROJETO: GRÊMIO ESTUDANTIL "REAL"
+=========================================================
+
+Aqui está o resumo definitivo de EXATAMENTE tudo o que compreendi que você exige para este site. Este é o nosso "contrato" de excelência.
+
+1. OBJETIVO E POSICIONAMENTO
+---------------------------------------------------------
+O site não é apenas um blogzinho; ele é a plataforma digital oficial do Grêmio Estudantil REAL ("Representação Smarter & Stronger"), representando mais de 7.000 alunos no IFAL. O objetivo do site é ser uma ferramenta de trabalho séria: um canal de comunicação direta onde os alunos ouvidorias, dúvidas e denúncias, enquanto acompanham a transparência dos projetos.
+
+
+2. EXIGÊNCIAS VISUAIS (NÍVEL AWWWARDS)
+---------------------------------------------------------
+- IDENTIDADE AWWWARDS: O design precisa "chocar" de tão perfeito, claro e organizado. Zero cara de template pronto ou IA genérica.
+- TEMA LIGHT MINIMALISTA: Fundo majoritariamente limpo (branco neve `#FFFFFF` e cinza hiper-claro `#FAFAFA`). Você odiou o tema "Cinematic Dark Mode". A elegância aqui vem da organização cirúrgica dos espaços em branco.
+- TIPOGRAFIA RESTRITA: Toda e qualquer letra no site DEVE usar única e exclusivamente a fonte "Google Sans" (Product Sans). Sem misturas.
+- AS CORES DA CHAPA: A identidade depende da aplicação imaculada do Roxo Escuro Oficial (`#5e11ac`) e Laranja Autêntico (`#fb8e0b`) apenas como destaques de altíssimo luxo orgânico (barras de progresso, gradientes de preloader, luz em hover, ícones selecionados).
+- COMPONENTES SAAS PREMIUM: A barra de navegação que desce conforme o scroll precisa ser uma "pílula de vidro" flutuante (glassmorphism/backdrop-blur). O formulário central precisa lembrar uma dashboard de um aplicativo milionário, com blocos lado a lado flutuantes para "Dúvida" e "Denúncia".
+
+
+3. COMPORTAMENTO E ALTA PERFORMANCE (GSAP)
+---------------------------------------------------------
+- TRANSIÇÕES FLUIDAS: Uso mandatório da biblioteca "GSAP" profissional.
+- PRELOADER: Quando a pessoa abre o site, ele não "aparece seco". Uma tela elegante exibe o logo REAL enquanto uma barrinha texturizada Roxo-Laranja carrega a interface.
+- SCROLLTRIGGER: Os textos da hero section (título e botões) sobem em cascata (`stagger fade-up`). Conforme o estudante rola as métricas, os projetos e ferramentas da diretoria vão deslizando para cima suavemente, sem travar. O layout reage como manteiga. Sem bugs, "sem erros".
+
+
+4. FUNCIONALIDADES TÉCNICAS INEGOCIÁVEIS
+---------------------------------------------------------
+> A. REDIRECIONAMENTO INTELIGENTE (GOOGLE FORMS)
+No bloco principal "A Cena de Abertura", há o input do aluno. Quando ele escreve a denúncia ou dúvida e aperta "Enviar", o nosso Javascript mastiga aquilo, verifica a opção de anonimato/dados estudantis e REDIRECIONA automaticamente para uma aba no navegador exibindo o seu formulário real do Google (forms.gle) COM TODOS OS DADOS JÁ ESCRITOS NOS CAMPOS CORRETOS. Perfeição funcional.
+
+> B. MURAL DE NOTÍCIAS HÍBRIDO (@geelifal)
+O site possui uma galeria "Masonry/Square" das novidades do campus. Há uma API dupla trabalhando nos bastidores: ela tenta vorazmente coletar os links das fotos nativas, curtidas e comentários direto do Instagram do `@geelifal`. Se a rede do IFAL bloquear, ou a Meta cair, um design de "mock (reserva segura)" assume, mostrando que o site é inquebrável.
+
+> C. PROJETOS EM ANDAMENTO
+Uma aba totalmente transparente indicando projetos ("Ampliação de Wi-Fi", "Revisão do Cardápio") com tags coloridas bonitas ("Em Andamento", "Em Análise") e barras de % preenchidas mostrando que o Grêmio está trabalhando sob métricas reais.
+
+> D. DIRETORIAS ORGÂNICAS E MODAIS
+Em vez de jogar uma enciclopédia no texto, a estrutura das 15 pastas e cargos engaja o espectador. Clicando em qualquer pasta (ex. Cultura e Esporte, Financeiro, Mulher), abrimos um sutil Modal Premium (Overlay) no centro da tela para ler a Biografia / Papel com botão elegante para fechar.
+
+
+RESUMO: 
+Você me pediu para transformar uma página web num Instrumento Digital de Altíssima Performance — Perfeito, Clean, Fiel às Cores, Tipografia Única (Google Sans), Recheado de Animações Prêmium (GSAP) e Ferramentas Práticas (Insta/Forms), SEM NENHUM CÓDIGO QUEBRADO. E eu entendi as falhas do passado e me comprometi totalmente com a grandeza dessa referência.
