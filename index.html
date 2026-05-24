@@ -1,265 +1,304 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>REAL - Grêmio Estudantil | IFAL</title>
-    <link href="https://fonts.cdnfonts.com/css/product-sans" rel="stylesheet">
+    <title>GEEL | Gestão, Arte & Tecnologia</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400;1,600;1,800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.39/dist/lenis.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="css/main.css">
 </head>
-<body>
-    <div class="preloader">
+<body class="is-loading">
+
+    <div id="theme-transition-circle"></div>
+
+    <div class="awwwards-preloader">
         <div class="preloader-content">
-            <img class="logotipo-preloader" src="./assets/logotipo.png" alt="REAL">
-            <div class="preloader-progress"><div class="preloader-bar" id="preloaderBar"></div></div>
+            <span class="preloader-text overflow-hidden">
+                <span class="reveal-up scramble-text" data-text="WEBSITE GEEL"></span>
+            </span>
+            <span class="preloader-counter" id="loader-counter">00</span>
+        </div>
+        <div class="preloader-bar"><div class="preloader-progress"></div></div>
+    </div>
+
+    <div class="menu-overlay">
+        <div class="menu-bg-img"></div>
+        <div class="menu-inner container">
+            <div class="menu-links">
+                <a href="#institucional" class="menu-link"><span class="menu-num">01</span> Institucional</a>
+                <a href="#comunicados" class="menu-link"><span class="menu-num">02</span> Transparência</a>
+                <a href="#acoes" class="menu-link"><span class="menu-num">03</span> Projetos</a>
+                <a href="#ouvidoria" class="menu-link"><span class="menu-num">04</span> Ouvidoria</a>
+            </div>
+            <div class="menu-info">
+                <h4>Contato Direto</h4>
+                <a href="mailto:diretoria@geel.org">diretoria@geel.org</a>
+                <h4>Redes</h4>
+                <div class="menu-socials">
+                    <a href="#">Instagram</a>
+                    <a href="#">LinkedIn</a>
+                    <a href="#">Portal</a>
+                </div>
+            </div>
         </div>
     </div>
 
-    <header class="header">
-        <div class="header-pill">
-            <a href="#" class="logo" style="text-decoration: none;">
-                <img class="logotipo" src="./assets/logotipo.png" alt="logotipo">
-            </a>
-
-            <nav class="nav-links">
-                <a href="#inicio">Ouvidoria</a>
-                <a href="#projetos">Projetos</a>
-                <a href="#noticias">Notícias</a>
-                <a href="#diretorias">Diretorias</a>
-            </nav>
-
-            <div class="header-action">
-                <button class="btn-primary" onclick="document.getElementById('projetos').scrollIntoView({behavior: 'smooth'})">
-                    Plano de Gestão
-                </button>
+    <nav class="pill-nav-cluster">
+        <div class="pill-group-left">
+            <div class="pill-btn logo-pill">
+                <img src="assets/images/logo.png" alt="GEEL">
             </div>
+            <button id="menuToggle" class="pill-btn menu-pill hover-target">
+                <span class="menu-text">menu</span> <i class="ph-fill ph-caret-down"></i>
+            </button>
+            <button id="themeToggle" class="pill-btn theme-pill hover-target" aria-label="Alternar Tema">
+                <div class="theme-switch-ring"></div>
+                <i class="ph ph-moon icon-moon"></i>
+                <i class="ph ph-sun icon-sun"></i>
+            </button>
         </div>
-    </header>
-
+        <div class="pill-group-right">
+            <button class="circle-btn hover-target"><i class="ph ph-caret-left"></i></button>
+            <button class="circle-btn hover-target"><i class="ph ph-caret-right"></i></button>
+        </div>
+    </nav>
     <main>
-        <section id="inicio" class="hero-section">
-            <div class="hero-content">
-                <div class="badge">Representando +7.000 alunos no IFAL</div>
-                <h1 class="hero-title">Representação<br>Smarter & Stronger.</h1>
-                <p class="hero-subtitle">A voz do estudante processada e enviada diretamente para a nossa ouvidoria oficial de forma transparente.</p>
-
-                <div class="hero-input-wrapper">
-                    <form id="chatForm" class="hero-form">
-                        <div class="input-glow"></div>
-                        <i class="ph-duotone ph-sparkle"></i>
-                        <input type="text" id="mainInput" placeholder="Sua voz move a mudança. Digite sua sugestão ou denúncia..." autocomplete="off">
-                        <button type="submit" id="submitBtn"><i class="ph-bold ph-arrow-right"></i></button>
-                    </form>
+        <section class="hero-section bento-hero">
+            <div class="container hero-bento-container">
+                <!-- Left Side: Main Text -->
+                <div class="bento-left fade-up">
+                    <div class="hero-top-badge">
+                        <div class="pulse-dot"></div>
+                        <span>Gestão 2025/26 • Transparência R.E.A.L.</span>
+                    </div>
                     
-                    <div id="studentDataFields" class="student-fields collapsed">
-                        <div class="field-group username">
-                            <i class="ph-duotone ph-user"></i>
-                            <input type="text" id="studentName" placeholder="Nome Completo" required>
-                        </div>
-                        <div class="field-row">
-                            <div class="field-group">
-                                <i class="ph-duotone ph-identification-card"></i>
-                                <input type="text" id="studentId" placeholder="Matrícula" required>
+                    <h1 class="hero-title">
+                        Transformando<br>o ensino com a<br>
+                        <span class="serif-italic">Gestão R.E.A.L.</span>
+                    </h1>
+                </div>
+
+                <!-- Right Side: Bento Grid -->
+                <div class="bento-right fade-up delay-1">
+                    <!-- Top Large Card -->
+                    <div class="bento-card bento-large">
+                        <img src="assets/images/ifal.jpeg" alt="IFAL Campus" class="bento-bg">
+                        <div class="bento-overlay">
+                            <div class="bento-tags">
+                                <span class="glass-tag">apoio ao aluno</span>
+                                <span class="glass-tag">eventos</span>
+                                <span class="glass-tag">infraestrutura</span>
                             </div>
-                            <div class="field-group">
-                                <i class="ph-duotone ph-chalkboard"></i>
-                                <input type="text" id="studentClass" placeholder="Turma/Curso" required>
+                            <div class="bento-content">
+                                <h3>Explore as propostas e os benefícios do Grêmio.</h3>
+                                <p>Comunicação direta entre alunos, professores e direção.</p>
+                            </div>
+                            <button class="bento-arrow"><i class="ph ph-arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="bento-bottom-row">
+                        <!-- Bottom Left Card -->
+                        <div class="bento-card bento-small bento-accent-1">
+                            <h3>Conecte-se<br>com a gente</h3>
+                            <div class="bento-socials">
+                                <a href="#"><i class="ph-fill ph-instagram-logo"></i></a>
+                                <a href="#"><i class="ph-fill ph-whatsapp-logo"></i></a>
+                                <a href="#"><i class="ph-fill ph-envelope-simple"></i></a>
+                            </div>
+                        </div>
+
+                        <!-- Bottom Right Card -->
+                        <div class="bento-card bento-small bento-accent-2">
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                                <span class="bento-badge">/oportunidades</span>
+                                <button class="bento-arrow small-arrow"><i class="ph ph-arrow-up-right"></i></button>
+                            </div>
+                            <div>
+                                <h3>Abrace o futuro estudantil.</h3>
+                                <p>Nosso portal permite conectar, colaborar e evoluir num <strong>ambiente dinâmico</strong>.</p>
+                            </div>
+                            <div class="bento-users">
+                                <div class="avatar-stack">
+                                    <img src="https://i.pravatar.cc/100?img=1" alt="User">
+                                    <img src="https://i.pravatar.cc/100?img=2" alt="User">
+                                    <img src="https://i.pravatar.cc/100?img=3" alt="User">
+                                </div>
+                                <span>+7k alunos!</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="institucional" class="scrollytelling-section">
+            <div class="container">
+                <p class="massive-text scroll-highlight" id="manifestoText">
+                    A energia do Ifal Campus Maceió está na diversidade dos seus cursos e na força dos seus estudantes. Para garantir que essa força seja sempre respeitada, o Grêmio Estudantil Edson Luís (GEEL) atua com total seriedade. Promovemos uma representação técnica, ativa e transparente, garantindo que a voz de cada aluno seja ouvida e defendida.
+            </div>
+        </section>
+
+        <section id="comunicados" class="news-mural">
+            <div class="news-header container">
+                <h2 class="section-title">Diário <span class="serif-italic">Oficial.</span></h2>
+            </div>
+            
+            <div class="news-split-container container">
+                <div class="news-list" id="newsList">
+                </div>
+                <div class="news-image-viewer">
+                    <div class="viewer-inner">
+                        <img id="newsViewerImg" src="" alt="Notícia">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="acoes" class="horizontal-section">
+            <div class="horizontal-pin-wrapper">
+                <div class="horizontal-container" id="horizontalContainer">
+                    <div class="horizontal-item title-item">
+                        <h2 class="massive-heading">Projetos em<br><span class="serif-italic">Execução.</span></h2>
+                        <p class="fade-up">Acompanhamento em tempo real.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="departamentos" class="bento-section">
+            <div class="container">
+                <div class="bento-grid">
+                    <div class="bento-box span-12 bg-dark color-light fade-up">
+                        <div class="stat-group">
+                            <div class="stat-item">
+                                <h3 class="stat-number" data-target="7000">0</h3>
+                                <p>Alunos Representados</p>
+                            </div>
+                            <div class="stat-item">
+                                <h3 class="stat-number" data-target="24">0</h3>
+                                <p>Ofícios Protocolados</p>
+                            </div>
+                            <div class="stat-item">
+                                <h3 class="stat-number" data-target="100">0</h3>
+                                <span class="percent-sign">%</span>
+                                <p>Transparência de Caixa</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="hero-input-footer">
-                        <label class="anon-toggle">
-                            <input type="checkbox" id="anonToggle">
-                            <span class="toggle-switch"></span>
-                            <span>Enviar anonimamente</span>
-                        </label>
-                        <span class="secure-badge"><i class="ph-fill ph-lock-key"></i> Redirecionamento Google Forms</span>
+                    <div class="bento-box span-12 accordion-box fade-up">
+                        <h3 class="box-title">Gestão 2025/26: R.E.A.L</h3>
+                        <p style="margin-bottom: 2rem; color: var(--text-secondary);">Resistência Estudantil, Ação e Liberdade</p>
+                        <div class="accordion" id="deptAccordion">
+                            </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="features-section">
-            <div class="section-header centered gsap-reveal">
-                <h2>Pilares de Ação da Nossa Gestão</h2>
-            </div>
-            <div class="features-grid">
-                <div class="feature-card gsap-reveal modal-trigger" data-title="Ensino e Assistência" data-content="Acompanhamento de projetos pedagógicos e representação discente nos conselhos de classe para garantir direitos e auxílios.">
-                    <div class="icon-wrapper"><i class="ph-duotone ph-books"></i></div>
-                    <h3>Ensino e Assistência</h3>
-                    <p>Apoio estudantil contínuo de ponta a ponta.</p>
+        <section id="ouvidoria" class="contact-section">
+            <div class="container contact-wrapper">
+                <div class="contact-text">
+                    <h2 class="">Ouvidoria<br><span class="serif-italic">Digital.</span></h2>
+                    <p class="fade-up">Envie sua proposta, denúncia ou solicitação diretamente para o sistema integrado da mesa diretora.</p>
                 </div>
-                <div class="feature-card gsap-reveal modal-trigger" data-title="Ação e Mobilização" data-content="Mobilização dos estudantes pelo passe estudantil, infraestrutura dos laboratórios e apoio técnico de qualidade.">
-                    <div class="icon-wrapper"><i class="ph-duotone ph-hand-fist"></i></div>
-                    <h3>Ação e Mobilização</h3>
-                    <p>Sua voz ativa e defendida no campus IFAL.</p>
-                </div>
-                <div class="feature-card gsap-reveal modal-trigger" data-title="Cultura e Esportes" data-content="Organização do iFolia, reativação de clubes estudantis extracurriculares e torneios interclasses frequentes.">
-                    <div class="icon-wrapper"><i class="ph-duotone ph-palette"></i></div>
-                    <h3>Cultura e Esportes</h3>
-                    <p>Eventos, expressões artísticas e torneios.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="projetos" class="projects-section">
-            <div class="section-header centered gsap-reveal">
-                <h2>Transparência em tempo real</h2>
-                <p>Acompanhe o status e a evolução das nossas principais propostas e projetos de infraestrutura do campus.</p>
-            </div>
-            <div class="projects-grid">
-                <div class="project-card gsap-reveal">
-                    <div class="project-info">
-                        <div class="project-status">
-                            <span class="status-dot"></span> Em Andamento
+                <div class="contact-form-wrapper fade-up">
+                    <form class="premium-form">
+                        <div class="input-row">
+                            <div class="input-group">
+                                <input type="text" id="name" required placeholder=" ">
+                                <label for="name">Nome Completo</label>
+                                <div class="line-focus"></div>
+                            </div>
+                            <div class="input-group">
+                                <input type="text" id="matricula" required placeholder=" ">
+                                <label for="matricula">Matrícula Acadêmica</label>
+                                <div class="line-focus"></div>
+                            </div>
                         </div>
-                        <h4>Ampliação do Wi-Fi</h4>
-                        <p>Mapeamento de pontos cegos no bloco central e negociação com a reitoria para roteadores de alta densidade.</p>
-                        <div class="progress-bar">
-                            <div class="progress" style="width: 65%;"></div>
+                        <div class="input-group">
+                            <select id="assunto" required>
+                                <option value="" disabled selected></option>
+                                <option value="proposta">Proposta Institucional</option>
+                                <option value="denuncia">Denúncia Oficial</option>
+                                <option value="oficio">Requerimento</option>
+                            </select>
+                            <label for="assunto" class="select-label">Natureza do Protocolo</label>
+                            <div class="line-focus"></div>
                         </div>
-                        <span class="progress-text">65% Integrado</span>
-                    </div>
-                </div>
-                <div class="project-card gsap-reveal">
-                    <div class="project-info">
-                        <div class="project-status warning">
-                            <span class="status-dot"></span> Em Análise
+                        <div class="input-group">
+                            <textarea id="message" rows="1" required placeholder=" "></textarea>
+                            <label for="message">Fundamentação...</label>
+                            <div class="line-focus"></div>
                         </div>
-                        <h4>Revisão do Cardápio</h4>
-                        <p>Coleta de assinaturas e reuniões com a nutrição para incluir opções vegetarianas oficiais.</p>
-                        <div class="progress-bar">
-                            <div class="progress" style="width: 30%;"></div>
-                        </div>
-                        <span class="progress-text">30% Planejado</span>
-                    </div>
-                </div>
-                <div class="project-card gsap-reveal">
-                    <div class="project-info">
-                        <div class="project-status initial">
-                            <span class="status-dot"></span> Planejamento
-                        </div>
-                        <h4>Expansão das Áreas</h4>
-                        <p>Plano de revitalização do pátio central equipado com tomadas solares e novos mobiliários ergonômicos.</p>
-                        <div class="progress-bar">
-                            <div class="progress" style="width: 15%;"></div>
-                        </div>
-                        <span class="progress-text">15% Projetado</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="noticias" class="news-section">
-            <div class="section-header gsap-reveal">
-                <div>
-                    <h2>Mural do Grêmio</h2>
-                    <p>Fique por dentro das últimas resoluções e eventos organizados pela REAL.</p>
-                </div>
-                <a href="https://instagram.com/geelifal" target="_blank" class="view-all-btn">Siga @geelifal <i class="ph-bold ph-arrow-right"></i></a>
-            </div>
-            <div class="mural-grid" id="instagramFeedContainer">
-                <!-- Injetado via JS -->
-            </div>
-        </section>
-
-        <section id="diretorias" class="directories-section">
-            <div class="section-header centered gsap-reveal">
-                <h2>Quem constrói a REAL</h2>
-                <p>Conheça as diretorias que trabalham diariamente pelos seus direitos.</p>
-            </div>
-            <div class="dir-grid" id="directoriesGridContainer">
-                <!-- Injetado via JS -->
-            </div>
-        </section>
-
-        <section id="duvidas" class="faq-section">
-            <div class="section-header centered gsap-reveal">
-                <h2>Dúvidas Frequentes</h2>
-                <p>Respostas rápidas para as questões mais procuradas na ouvidoria.</p>
-            </div>
-            <div class="faq-accordion gsap-reveal">
-                <div class="faq-item">
-                    <button class="faq-question">Como faço para emitir a minha carteirinha de estudante?</button>
-                    <div class="faq-answer"><p>A "Carteirinha da REAL" garante meia-entrada e acesso ao refeitório. Ela deve ser solicitada de forma gratuita diretamente no nosso posto presencial do Bloco A durante os intervalos.</p></div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question">Quais as regras para fundar um clube de alunos?</button>
-                    <div class="faq-answer"><p>Incentivamos a formação de grupos (ex: Xadrez, Robótica, Literatura). Reúna no mínimo 5 estudantes, crie uma proposta e entregue para a Diretoria de Cultura e Esportes aprovar e ceder o espaço.</p></div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question">Minha denúncia aqui no portal é realmente anônima?</button>
-                    <div class="faq-answer"><p>Absolutamente. Ao marcar "Esconder identidade", seus dados acadêmicos não chegam ao nosso sistema interno. O caso se torna estritamente sigiloso pela Diretoria de Mulheres, Diversidade ou Ensino.</p></div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question">Sobre reuniões com a reitoria e editais, onde acompanho?</button>
-                    <div class="faq-answer"><p>Acompanhe pela aba "Projetos em Andamento" aqui do site ou pelas publicações oficiais no nosso Instagram (@geelifal), onde divulamos todas as datas e editais abertos do Grêmio Estudantil de forma pública.</p></div>
+                        <button type="button" class="submit-btn hover-arrow">
+                            <span>Protocolar</span>
+                            <i class="ph ph-arrow-right"></i>
+                        </button>
+                    </form>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="footer">
-        <div class="footer-wrapper">
+    <footer class="editorial-footer">
+        <div class="footer-art-bg parallax-footer">GEEL</div>
+        <div class="container footer-content-layer">
             <div class="footer-grid">
-                <div class="footer-brand-col">
-                    <img class="logotipo-footer" src="./assets/logotipo.png" alt="Grêmio REAL">
-                    <p>Representação Smarter & Stronger. Trabalhando pelo orgulho de ser estudante do IFAL.</p>
-                    <div class="social-links">
-                        <a href="https://www.instagram.com/real_ifal/"><i class="ph-fill ph-instagram-logo"></i></a>
-                        <a href="#"><i class="ph-fill ph-twitter-logo"></i></a>
-                    </div>
+                <div class="footer-col footer-fade-up">
+                    <img src="assets/images/logo.png" alt="GEEL Logo" class="footer-logo-img">
+                    <h2 class="footer-logo">Diretoria de Tecnologia e Inovação.</h2>
+                    <p class="footer-desc">Transparência, Arte e Inovação Acadêmica.</p>
                 </div>
-                <div class="footer-nav-col">
-                    <h4>Nacional</h4>
-                    <a href="#">UNE</a>
-                    <a href="#">UBES</a>
-                    <a href="#">FNET</a>
+                <div class="footer-col footer-fade-up">
+                    <h4 class="col-title">Portal</h4>
+                    <ul class="footer-nav">
+                        <li><a href="#" class="link-hover">Estatuto Oficial</a></li>
+                        <li><a href="#" class="link-hover">Atas e Resoluções</a></li>
+                        <li><a href="#" class="link-hover">Editais Abertos</a></li>
+                    </ul>
                 </div>
-                <div class="footer-nav-col">
-                    <h4>Navegação</h4>
-                    <a href="#inicio">Ouvidoria</a>
-                    <a href="#projetos">Projetos</a>
-                    <a href="#diretorias">Diretorias</a>
-                    <a href="#duvidas">Dúvidas</a>
-                </div>
-                <div class="footer-contact-col">
-                    <h4>Contato</h4>
-                    <p>Sala C10, Bloco Central<br>contato@gremioreal.org</p>
+                <div class="footer-col footer-fade-up">
+                    <h4 class="col-title">Sede</h4>
+                    <address class="footer-address">
+                        Bloco Administrativo, Sala 102<br>
+                        Campus Central<br><br>
+                        <a href="mailto:protocolo@geel.org" class="link-hover">protocolo@geel.org</a>
+                    </address>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 Grêmio Estudantil REAL. Todos os direitos reservados.</p>
-                <p>Desenvolvido com excelência técnica.</p>
+                <p>&copy; 2026 GEEL - Grêmio Estudantil Edson Luís.</p>
+                <div class="social-links">
+                    <a href="#"><i class="ph ph-instagram-logo"></i></a>
+                    <a href="#"><i class="ph ph-linkedin-logo"></i></a>
+                </div>
             </div>
         </div>
     </footer>
 
-    <div id="toastMessage" class="toast">Sua solicitação foi redirecionada com sucesso!</div>
-
-    <div id="globalModal" class="modal-overlay">
-        <div class="modal-box" id="modalBoxElement">
-            <button class="modal-close-btn" id="closeModalBtn"><i class="ph-bold ph-x"></i></button>
-            <div id="modalProfileHeader" class="modal-profile-header hidden">
-                <div class="modal-avatar">
-                    <div class="avatar-ring"></div>
-                    <img id="modalBoxImage" src="" alt="Diretor">
-                </div>
-                <div class="modal-title-group">
-                    <span id="modalBoxRole" class="director-role">Cargo Oficial</span>
-                    <h2 id="modalBoxDirectorName" class="director-name">Nome</h2>
-                </div>
-            </div>
-            <h2 id="modalBoxTitle">Título do Modal</h2>
-            <p id="modalBoxContent">Conteúdo do modal...</p>
-            <button class="modal-action-btn" id="modalActionBtn">Voltar</button>
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
         </div>
     </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>new window.VLibras.Widget('https://vlibras.gov.br/app');</script>
 
-    <script src="script.js"></script>
+    <script src="js/data/news.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>
