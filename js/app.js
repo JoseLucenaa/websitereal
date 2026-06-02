@@ -40,43 +40,27 @@ document.addEventListener('DOMContentLoaded', () => {
         return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
     };
 
-    function parseAndRenderNews(text) {
-        const parser = new DOMParser();
-        const xmlDoc = parser.parseFromString(text, "text/xml");
-        
-        const items = Array.from(xmlDoc.querySelectorAll("item")).slice(0, 8);
+    function parseAndRenderNewsJSON(itemsArray) {
+        const items = itemsArray.slice(0, 8);
         if (items.length > 0) {
             if(featuredPost) featuredPost.innerHTML = '';
             if(latestPostsList) latestPostsList.innerHTML = '';
             if(morePostsGrid) morePostsGrid.innerHTML = '';
             
             items.forEach((item, i) => {
-                const title = escapeHtml(item.querySelector("title")?.textContent || "");
-                let link = escapeHtml(item.querySelector("link")?.textContent || item.querySelector("guid")?.textContent || "#");
+                const title = escapeHtml(item.title || "");
+                let link = escapeHtml(item.link || item.guid || "#");
                 link = link.trim();
                 
-                const pubDateRaw = escapeHtml(item.querySelector("pubDate")?.textContent || "");
-                const descriptionNode = item.querySelector("description");
-                let shortDesc = descriptionNode ? escapeHtml(descriptionNode.textContent) : "";
-                
-                const textoNode = item.querySelector("texto");
-                let htmlContent = "";
-                if (textoNode) htmlContent += textoNode.textContent;
-                if (descriptionNode) htmlContent += descriptionNode.textContent;
+                const pubDateRaw = escapeHtml(item.pubDate || "");
                 
                 const tempDiv = document.createElement("div");
-                tempDiv.innerHTML = htmlContent;
-                const imgTag = tempDiv.querySelector("img");
+                tempDiv.innerHTML = item.description || "";
+                let shortDesc = escapeHtml(tempDiv.textContent || "");
                 
                 let fallbackImg = "assets/images/ifal.jpeg";
-                let internalImg = "";
-                if (imgTag && imgTag.getAttribute("src")) {
-                    internalImg = escapeHtml(imgTag.getAttribute("src"));
-                    if (internalImg.startsWith('/')) internalImg = "https://www2.ifal.edu.br" + internalImg;
-                }
-                
                 let highResImg = link + "/@@images/image/large";
-                let onerrorAttr = `onerror="this.onerror=null; this.src='${internalImg ? internalImg : fallbackImg}';" loading="lazy"`;
+                let onerrorAttr = `onerror="this.onerror=null; this.src='${fallbackImg}';" loading="lazy"`;
                 
                 const pubDate = new Date(pubDateRaw);
                 let formattedDate = "Recente";
@@ -139,7 +123,8 @@ document.addEventListener('DOMContentLoaded', () => {
             
             setTimeout(() => { ScrollTrigger.refresh(); }, 500);
         } else {
-            if (featuredPost && featuredPost.innerHTML.includes('Carregando')) {
+            // Se o cache mostrar Nenhuma Noticia, e nós quisermos atualizar, precisamos checar novamente
+            if (featuredPost) {
                 featuredPost.innerHTML = '<p style="color:var(--text-muted); padding: 20px;">Nenhuma notícia encontrada.</p>';
             }
         }
@@ -147,24 +132,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function loadCampusNews() {
         try {
+            // Usando rss2json que é 100% confiável, retorna JSON direto, não sofre com bloqueios CORS estritos no Vercel
             const rssUrl = "https://www2.ifal.edu.br/campus/maceio/noticias/noticias/rss.xml";
-            const proxyUrl = "https://corsproxy.io/?" + encodeURIComponent(rssUrl);
+            const proxyUrl = "https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(rssUrl);
             
-            const cachedXml = localStorage.getItem('geel_news_cache');
-            if (cachedXml) {
-                parseAndRenderNews(cachedXml);
+            const cachedJson = localStorage.getItem('geel_news_cache_json');
+            if (cachedJson) {
+                try {
+                    parseAndRenderNewsJSON(JSON.parse(cachedJson));
+                } catch(e) {}
             }
 
             const response = await fetch(proxyUrl);
-            const text = await response.text();
+            const data = await response.json();
             
-            if (text === cachedXml) return; // Evitar re-renderização desnecessária
+            if (data.status !== "ok") {
+                throw new Error("RSS2JSON failed");
+            }
             
-            localStorage.setItem('geel_news_cache', text);
-            parseAndRenderNews(text);
+            const jsonString = JSON.stringify(data.items);
+            if (jsonString === cachedJson) return; // Evita piscar a tela
+            
+            localStorage.setItem('geel_news_cache_json', jsonString);
+            
+            // Renderiza novamente a nova versão
+            parseAndRenderNewsJSON(data.items);
 
         } catch (error) {
             console.error('Falha ao buscar notícias RSS:', error);
+            // Mostrar erro apenas se já não houver algo renderizado na tela pelo Cache
             if (featuredPost && featuredPost.innerHTML.includes('Carregando')) {
                 featuredPost.innerHTML = '<p style="color:var(--text-muted); padding: 20px;">Não foi possível carregar as notícias. Verifique sua conexão.</p>';
             }
