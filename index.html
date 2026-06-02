@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GEEL | Gestão, Arte & Tecnologia</title>
+    <title>GEEL | Grêmio Estudantil Edson Luís</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,6 +16,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
     <link rel="stylesheet" href="css/main.css">
+    <link rel="icon" href="assets/images/icon.png" type="image/png">
 </head>
 <body class="is-loading">
 
@@ -47,94 +48,67 @@
                 <div class="menu-socials">
                     <a href="#">Instagram</a>
                     <a href="#">LinkedIn</a>
-                    <a href="#">Portal</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <nav class="pill-nav-cluster">
-        <div class="pill-group-left">
-            <div class="pill-btn logo-pill">
-                <img src="assets/images/logo.png" alt="GEEL">
+    <header class="glass-header">
+        <div class="container header-inner">
+            <div class="header-logo">
+                <img src="assets/images/logo.png" alt="GEEL Logo" class="dynamic-logo">
             </div>
-            <button id="menuToggle" class="pill-btn menu-pill hover-target">
-                <span class="menu-text">menu</span> <i class="ph-fill ph-caret-down"></i>
-            </button>
-            <button id="themeToggle" class="pill-btn theme-pill hover-target" aria-label="Alternar Tema">
-                <div class="theme-switch-ring"></div>
-                <i class="ph ph-moon icon-moon"></i>
-                <i class="ph ph-sun icon-sun"></i>
-            </button>
-        </div>
-        <div class="pill-group-right">
-            <button class="circle-btn hover-target"><i class="ph ph-caret-left"></i></button>
-            <button class="circle-btn hover-target"><i class="ph ph-caret-right"></i></button>
-        </div>
-    </nav>
-    <main>
-        <section class="hero-section bento-hero">
-            <div class="container hero-bento-container">
-                <!-- Left Side: Main Text -->
-                <div class="bento-left fade-up">
-                    <div class="hero-top-badge">
-                        <div class="pulse-dot"></div>
-                        <span>Gestão 2025/26 • Transparência R.E.A.L.</span>
+            
+            <nav class="header-nav">
+                <a href="#institucional" class="nav-link">A Gestão</a>
+                <a href="#comunicados" class="nav-link">Diário Oficial</a>
+            </nav>
+
+            <div class="header-actions">
+                <button id="themeToggle" class="theme-toggle-btn" aria-label="Alternar Tema">
+                    <i class="ph ph-moon icon-moon"></i>
+                    <i class="ph ph-sun icon-sun"></i>
+                </button>
+                <button id="menuToggle" class="mobile-menu-btn" aria-label="Abrir Menu">
+                    <div class="burger">
+                        <span></span>
+                        <span></span>
                     </div>
-                    
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="editorial-hero">
+            <div class="container editorial-hero-inner">
+                <!-- Left Content -->
+                <div class="hero-content fade-up">
+                    <div class="hero-label">
+                        <span class="pulse-dot"></span> Gestão 2025/26
+                    </div>
                     <h1 class="hero-title">
-                        Transformando<br>o ensino com a<br>
-                        <span class="serif-italic">Gestão R.E.A.L.</span>
+                        Transformando<br>o ensino com<br>
+                        <span class="serif-italic">GEEL</span>
                     </h1>
+                    <p class="hero-subtitle">
+                        Comunicação direta entre alunos, professores e direção. Promovemos uma representação técnica, ativa e transparente para o Ifal Campus Maceió.
+                    </p>
+                    <div class="hero-cta-group">
+                        <a href="#acoes" class="primary-btn huge-btn">Nossos Projetos <i class="ph ph-arrow-right"></i></a>
+                        <a href="#ouvidoria" class="secondary-btn huge-btn">Ouvidoria</a>
+                    </div>
                 </div>
 
-                <!-- Right Side: Bento Grid -->
-                <div class="bento-right fade-up delay-1">
-                    <!-- Top Large Card -->
-                    <div class="bento-card bento-large">
-                        <img src="assets/images/ifal.jpeg" alt="IFAL Campus" class="bento-bg">
-                        <div class="bento-overlay">
-                            <div class="bento-tags">
-                                <span class="glass-tag">apoio ao aluno</span>
-                                <span class="glass-tag">eventos</span>
-                                <span class="glass-tag">infraestrutura</span>
-                            </div>
-                            <div class="bento-content">
-                                <h3>Explore as propostas e os benefícios do Grêmio.</h3>
-                                <p>Comunicação direta entre alunos, professores e direção.</p>
-                            </div>
-                            <button class="bento-arrow"><i class="ph ph-arrow-right"></i></button>
-                        </div>
-                    </div>
-
-                    <div class="bento-bottom-row">
-                        <!-- Bottom Left Card -->
-                        <div class="bento-card bento-small bento-accent-1">
-                            <h3>Conecte-se<br>com a gente</h3>
-                            <div class="bento-socials">
-                                <a href="#"><i class="ph-fill ph-instagram-logo"></i></a>
-                                <a href="#"><i class="ph-fill ph-whatsapp-logo"></i></a>
-                                <a href="#"><i class="ph-fill ph-envelope-simple"></i></a>
-                            </div>
-                        </div>
-
-                        <!-- Bottom Right Card -->
-                        <div class="bento-card bento-small bento-accent-2">
-                            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                                <span class="bento-badge">/oportunidades</span>
-                                <button class="bento-arrow small-arrow"><i class="ph ph-arrow-up-right"></i></button>
-                            </div>
-                            <div>
-                                <h3>Abrace o futuro estudantil.</h3>
-                                <p>Nosso portal permite conectar, colaborar e evoluir num <strong>ambiente dinâmico</strong>.</p>
-                            </div>
-                            <div class="bento-users">
-                                <div class="avatar-stack">
-                                    <img src="https://i.pravatar.cc/100?img=1" alt="User">
-                                    <img src="https://i.pravatar.cc/100?img=2" alt="User">
-                                    <img src="https://i.pravatar.cc/100?img=3" alt="User">
-                                </div>
-                                <span>+7k alunos!</span>
+                <!-- Right Cinematic Image -->
+                <div class="hero-visual fade-up delay-1">
+                    <div class="visual-wrapper">
+                        <img src="assets/images/ifal.jpeg" alt="IFAL Campus" class="cinematic-img">
+                        <div class="visual-overlay"></div>
+                        <div class="visual-badge">
+                            <div class="badge-text">
+                                <strong>+7.000 alunos</strong>
+                                <span>representados</span>
                             </div>
                         </div>
                     </div>
@@ -147,6 +121,7 @@
             <div class="container">
                 <p class="massive-text scroll-highlight" id="manifestoText">
                     A energia do Ifal Campus Maceió está na diversidade dos seus cursos e na força dos seus estudantes. Para garantir que essa força seja sempre respeitada, o Grêmio Estudantil Edson Luís (GEEL) atua com total seriedade. Promovemos uma representação técnica, ativa e transparente, garantindo que a voz de cada aluno seja ouvida e defendida.
+                </p>
             </div>
         </section>
 
@@ -155,23 +130,49 @@
                 <h2 class="section-title">Diário <span class="serif-italic">Oficial.</span></h2>
             </div>
             
-            <div class="news-split-container container">
-                <div class="news-list" id="newsList">
+            <div class="news-bento-grid container" id="newsBentoGrid">
+                <!-- Top Section: Featured + Latest -->
+                <div class="news-top-section">
+                    <a href="#" target="_blank" class="featured-post-wrapper">
+                        <div id="featuredPost" class="featured-post-container">
+                            <!-- Injetado pelo JS -->
+                        </div>
+                    </a>
+                    
+                    <div class="latest-posts-wrapper">
+                        <h3 class="latest-heading">Últimas Notícias</h3>
+                        <div id="latestPostsList" class="latest-posts-list">
+                            <!-- Injetado pelo JS -->
+                        </div>
+                    </div>
                 </div>
-                <div class="news-image-viewer">
-                    <div class="viewer-inner">
-                        <img id="newsViewerImg" src="" alt="Notícia">
+
+                <!-- Bottom Section: Carousel / Grid -->
+                <div class="news-bottom-section">
+                    <div class="bottom-header">
+                        <h3 class="latest-heading">Mais Notícias</h3>
+                        <div class="carousel-controls">
+                            <button class="nav-btn prev-btn" id="newsPrevBtn"><i class="ph ph-arrow-left"></i></button>
+                            <button class="nav-btn next-btn" id="newsNextBtn"><i class="ph ph-arrow-right"></i></button>
+                        </div>
+                    </div>
+                    
+                    <div id="morePostsGrid" class="more-posts-grid">
+                        <!-- Injetado pelo JS -->
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="acoes" class="horizontal-section">
-            <div class="horizontal-pin-wrapper">
-                <div class="horizontal-container" id="horizontalContainer">
-                    <div class="horizontal-item title-item">
-                        <h2 class="massive-heading">Projetos em<br><span class="serif-italic">Execução.</span></h2>
-                        <p class="fade-up">Acompanhamento em tempo real.</p>
+        <section id="acoes" class="news-mural" style="padding: 10vh 0;">
+            <div class="container">
+                <div class="title-item">
+                    <h2 class="massive-heading">Projetos em<br><span class="serif-italic">Execução.</span></h2>
+                    
+                    <div class="empty-state-box fade-up">
+                        <i class="ph ph-folder-open empty-icon"></i>
+                        <h3>Nenhum projeto no momento</h3>
+                        <p>Atualmente não existem projetos de grande porte em andamento. Nossa gestão está na fase de planejamento das próximas iniciativas técnicas.</p>
                     </div>
                 </div>
             </div>
@@ -185,10 +186,6 @@
                             <div class="stat-item">
                                 <h3 class="stat-number" data-target="7000">0</h3>
                                 <p>Alunos Representados</p>
-                            </div>
-                            <div class="stat-item">
-                                <h3 class="stat-number" data-target="24">0</h3>
-                                <p>Ofícios Protocolados</p>
                             </div>
                             <div class="stat-item">
                                 <h3 class="stat-number" data-target="100">0</h3>
@@ -265,16 +262,15 @@
                 <div class="footer-col footer-fade-up">
                     <h4 class="col-title">Portal</h4>
                     <ul class="footer-nav">
-                        <li><a href="#" class="link-hover">Estatuto Oficial</a></li>
-                        <li><a href="#" class="link-hover">Atas e Resoluções</a></li>
-                        <li><a href="#" class="link-hover">Editais Abertos</a></li>
+                        <li><a href="https://www2.ifal.edu.br/" class="link-hover">Portal do IFAL</a></li>
+                        <li><a href="https://exame.ifal.edu.br/publico/exames/emandamento" class="link-hover">Seleção IFAL</a></li>
                     </ul>
                 </div>
                 <div class="footer-col footer-fade-up">
                     <h4 class="col-title">Sede</h4>
                     <address class="footer-address">
-                        Bloco Administrativo, Sala 102<br>
-                        Campus Central<br><br>
+                        Pátio Central<br>
+                        IFAL Campus Maceió<br><br>
                         <a href="mailto:protocolo@geel.org" class="link-hover">protocolo@geel.org</a>
                     </address>
                 </div>
@@ -298,7 +294,6 @@
     <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
     <script>new window.VLibras.Widget('https://vlibras.gov.br/app');</script>
 
-    <script src="js/data/news.js"></script>
     <script src="js/app.js"></script>
 </body>
 </html>
