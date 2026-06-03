@@ -587,3 +587,158 @@ i.custom.icon-mulher { display: inline-block; width: 40px; height: 40px; backgro
 .premium-redirect-box .redirect-btn:hover i {
     transform: translateX(4px);
 }
+
+/* =========================================
+   Colaboradores Section
+========================================= */
+.colabs-section {
+    margin-top: 30px;
+    padding-top: 25px;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.colabs-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+
+.colabs-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+}
+
+.colab-item {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 14px;
+    padding: 6px 24px 6px 6px;
+    background: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 100px;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: default;
+}
+
+.colab-item:hover {
+    border-color: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.02);
+    transform: translateY(-2px);
+}
+
+.colab-item:hover .colab-name {
+    color: var(--primary-color);
+}
+
+.colab-photo-wrapper {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.04);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    flex-shrink: 0;
+    position: relative;
+}
+
+.colab-placeholder-icon {
+    position: absolute;
+    font-size: 26px;
+    color: rgba(0, 0, 0, 0.25);
+    z-index: 1;
+}
+
+.colab-photo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: relative;
+    z-index: 2;
+    background: #fcfcfc;
+}
+
+.colab-photo-img.fallback {
+    width: 50%;
+    height: 50%;
+    opacity: 0.2;
+}
+
+.colab-name {
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--text-color);
+    line-height: 1.2;
+    white-space: nowrap;
+    transition: color 0.2s ease;
+}
+
+/* Modo Escuro */
+[data-theme="dark"] .colabs-section {
+    border-top-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .colab-item {
+    border-color: transparent;
+}
+
+[data-theme="dark"] .colab-item:hover {
+    background: transparent;
+    border-color: transparent;
+}
+
+[data-theme="dark"] .colab-item:hover .colab-name {
+    color: var(--text-color);
+}
+
+[data-theme="dark"] .colab-item {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .colab-item:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+[data-theme="dark"] .colab-photo-wrapper {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255,255,255,0.08);
+}
+
+[data-theme="dark"] .colab-placeholder-icon {
+    color: rgba(255, 255, 255, 0.25);
+}
+
+[data-theme="dark"] .colab-photo-img {
+    background: #111;
+}
+
+
+.colab-photo-wrapper {
+    position: relative;
+}
+.colab-placeholder-icon {
+    position: absolute;
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+.colab-photo-img {
+    position: relative;
+    z-index: 2;
+    background: #fff;
+}
+[data-theme="dark"] .colab-placeholder-icon {
+    color: rgba(255, 255, 255, 0.3);
+}
+[data-theme="dark"] .colab-photo-img {
+    background: #222;
+}
