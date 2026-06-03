@@ -515,3 +515,75 @@ i.custom.icon-mulher { display: inline-block; width: 40px; height: 40px; backgro
 
 /* VLibras Layer */
 [vw] { z-index: 10001 !important; }
+.premium-redirect-box { 
+    background: transparent; 
+    border: 1px solid rgba(0, 0, 0, 0.08); 
+    border-radius: 20px; 
+    padding: 40px; 
+    text-align: left; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: flex-start; 
+    gap: 16px; 
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s ease;
+}
+.premium-redirect-box:hover {
+    border-color: rgba(0, 0, 0, 0.2);
+}
+.premium-redirect-box::before {
+    display: none;
+}
+.premium-redirect-box .redirect-icon { 
+    font-size: 32px; 
+    color: #111; 
+    margin-bottom: 8px;
+    background: none;
+    -webkit-background-clip: unset;
+    -webkit-text-fill-color: unset;
+    filter: none;
+}
+.premium-redirect-box .redirect-title { 
+    font-size: 1.4rem; 
+    font-weight: 600; 
+    color: #111; 
+    margin: 0; 
+    letter-spacing: -0.02em;
+}
+.premium-redirect-box .redirect-desc { 
+    color: #555; 
+    font-size: 1rem; 
+    line-height: 1.5; 
+    margin-bottom: 15px; 
+    max-width: 100%; 
+}
+.premium-redirect-box .redirect-btn { 
+    text-decoration: none; 
+    display: inline-flex; 
+    justify-content: center; 
+    align-items: center; 
+    width: auto; 
+    padding: 14px 28px; 
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-radius: 12px;
+    background: #111;
+    color: #fff;
+    transition: all 0.2s ease;
+    box-shadow: none;
+    margin-top: 10px;
+}
+.premium-redirect-box .redirect-btn:hover {
+    transform: none;
+    box-shadow: none;
+    background: #000;
+}
+.premium-redirect-box .redirect-btn i {
+    margin-left: 8px;
+    font-size: 1.1rem;
+    transition: transform 0.2s ease;
+}
+.premium-redirect-box .redirect-btn:hover i {
+    transform: translateX(4px);
+}

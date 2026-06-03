@@ -5,23 +5,23 @@ const siteData = {
         { title: "Fórum de Lideranças", desc: "Integração das chapas acadêmicas.", img: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=800&auto=format&fit=crop" }
     ],
     departments: [
-        { name: "Presidência", icon: "ph-crown", desc: "Igor Micael", photo: "assets/images/gestão/igor.jpeg", roleDesc: "Coordenação geral, representação institucional e liderança da diretoria executiva.", bio: "Líder estudantil focado em inovação e na defesa dos direitos acadêmicos." },
-        { name: "Vice-Presidência", icon: "ph-star", desc: "Arthur Menezes", photo: "assets/images/gestão/arthur.jpeg", roleDesc: "Auxílio direto à presidência e coordenação das pautas estratégicas.", bio: "Engajado no movimento estudantil com experiência em articulação de projetos." },
-        { name: "Secretaria Geral", icon: "ph-file-text", desc: "Alice Santos", photo: "assets/images/gestão/alice.jpeg", roleDesc: "Gestão de documentos, atas, registros oficiais e organização administrativa.", bio: "Organizada e proativa, garantindo o fluxo e a transparência documental." },
-        { name: "Primeira Secretaria", icon: "ph-pencil-simple", desc: "Mylena Cristina", photo: "assets/images/gestão/mylena.jpg", roleDesc: "Apoio à secretaria geral, controle de reuniões e processos internos.", bio: "Estudante dedicada a otimizar os processos do grêmio no dia a dia." },
-        { name: "Secretaria de Patrimônio e Finanças", icon: "ph-coin", desc: "Daniele Candeia", photo: "assets/images/gestão/daniele.jpeg", roleDesc: "Gestão do orçamento, captação de recursos e controle patrimonial.", bio: "Focada em responsabilidade fiscal e transparência nos recursos do grêmio." },
-        { name: "Secretaria de Assuntos Políticos", icon: "ph-scales", desc: "Grazielle Melissa", photo: "assets/images/gestão/grazy.jpeg", roleDesc: "Articulação política, debates institucionais e representação externa.", bio: "Ativista por melhorias educacionais e fortalecimento da voz dos estudantes." },
-        { name: "Diretoria de Eventos", icon: "ph-calendar-star", desc: "Suzanne Victória", photo: "assets/images/gestão/suzanne.jpeg", roleDesc: "Organização de atividades culturais, festas, recepções e integrações.", bio: "Apaixonada por criar momentos memoráveis e promover o convívio acadêmico." },
-        { name: "Diretoria de Comunicação", icon: "ph-megaphone", desc: "Miguel Araújo", photo: "assets/images/gestão/miguel.jpeg", roleDesc: "Gestão das redes sociais, comunicados oficiais e identidade visual.", bio: "Criativo e atento às novas mídias para manter os estudantes sempre informados." },
-        { name: "Diretoria de Tecnologia e Inovação", icon: "ph-laptop", desc: "José Lucena", photo: "assets/images/gestão/lucena.jpg", roleDesc: "Desenvolvimento de plataformas, modernização tecnológica e suporte digital.", bio: "Entusiasta de tecnologia buscando soluções digitais para os problemas da comunidade." },
-        { name: "Diretoria de Assistência Estudantil", icon: "ph-hand-heart", desc: "Andrey Romão", photo: "assets/images/gestão/andrey.jpeg", roleDesc: "Apoio a políticas de permanência, bolsas e suporte aos alunos em vulnerabilidade.", bio: "Empático e dedicado a garantir que todos tenham condições adequadas de estudo." },
-        { name: "Diretoria de Assuntos Educacionais", icon: "ph-book-open", desc: "Emile Vitória", photo: "assets/images/gestão/emile.png", roleDesc: "Debate do currículo escolar, mediação com docentes e melhoria da qualidade de ensino.", bio: "Defensora de uma educação pública de qualidade e acessível a todos." },
+        { name: "Presidência", icon: "ph-crown", desc: "Igor Micael", photo: "assets/images/team/igor.jpeg", roleDesc: "Coordenação geral, representação institucional e liderança da diretoria executiva.", bio: "Líder estudantil focado em inovação e na defesa dos direitos acadêmicos." },
+        { name: "Vice-Presidência", icon: "ph-star", desc: "Arthur Menezes", photo: "assets/images/team/arthur.jpeg", roleDesc: "Auxílio direto à presidência e coordenação das pautas estratégicas.", bio: "Engajado no movimento estudantil com experiência em articulação de projetos." },
+        { name: "Secretaria Geral", icon: "ph-file-text", desc: "Alice Santos", photo: "assets/images/team/alice.jpeg", roleDesc: "Gestão de documentos, atas, registros oficiais e organização administrativa.", bio: "Organizada e proativa, garantindo o fluxo e a transparência documental." },
+        { name: "Primeira Secretaria", icon: "ph-pencil-simple", desc: "Mylena Cristina", photo: "assets/images/team/mylena.jpg", roleDesc: "Apoio à secretaria geral, controle de reuniões e processos internos.", bio: "Estudante dedicada a otimizar os processos do grêmio no dia a dia." },
+        { name: "Secretaria de Patrimônio e Finanças", icon: "ph-coin", desc: "Daniele Candeia", photo: "assets/images/team/daniele.jpeg", roleDesc: "Gestão do orçamento, captação de recursos e controle patrimonial.", bio: "Focada em responsabilidade fiscal e transparência nos recursos do grêmio." },
+        { name: "Secretaria de Assuntos Políticos", icon: "ph-scales", desc: "Grazielle Melissa", photo: "assets/images/team/grazy.jpeg", roleDesc: "Articulação política, debates institucionais e representação externa.", bio: "Ativista por melhorias educacionais e fortalecimento da voz dos estudantes." },
+        { name: "Diretoria de Eventos", icon: "ph-calendar-star", desc: "Suzanne Victória", photo: "assets/images/team/suzanne.jpeg", roleDesc: "Organização de atividades culturais, festas, recepções e integrações.", bio: "Apaixonada por criar momentos memoráveis e promover o convívio acadêmico." },
+        { name: "Diretoria de Comunicação", icon: "ph-megaphone", desc: "Miguel Araújo", photo: "assets/images/team/miguel.jpeg", roleDesc: "Gestão das redes sociais, comunicados oficiais e identidade visual.", bio: "Criativo e atento às novas mídias para manter os estudantes sempre informados." },
+        { name: "Diretoria de Tecnologia e Inovação", icon: "ph-laptop", desc: "José Lucena", photo: "assets/images/team/lucena.jpg", roleDesc: "Desenvolvimento de plataformas, modernização tecnológica e suporte digital.", bio: "Entusiasta de tecnologia buscando soluções digitais para os problemas da comunidade." },
+        { name: "Diretoria de Assistência Estudantil", icon: "ph-hand-heart", desc: "Andrey Romão", photo: "assets/images/team/andrey.jpeg", roleDesc: "Apoio a políticas de permanência, bolsas e suporte aos alunos em vulnerabilidade.", bio: "Empático e dedicado a garantir que todos tenham condições adequadas de estudo." },
+        { name: "Diretoria de Assuntos Educacionais", icon: "ph-book-open", desc: "Emile Vitória", photo: "assets/images/team/emile.png", roleDesc: "Debate do currículo escolar, mediação com docentes e melhoria da qualidade de ensino.", bio: "Defensora de uma educação pública de qualidade e acessível a todos." },
         { name: "Diretoria de Diversidade Sexual", icon: "ph-rainbow", desc: "A definir", photo: "#", roleDesc: "Promoção do respeito, campanhas de conscientização e apoio à causa LGBTQIAPN+.", bio: "Posição atualmente em aberto aguardando indicação." },
-        { name: "Diretoria de Diversidade Étnica", icon: "ph-users-three", desc: "Alisson Teix", photo: "assets/images/gestão/chicote.jpeg", roleDesc: "Ações contra o racismo, valorização cultural e políticas afirmativas.", bio: "Liderança engajada na luta por igualdade e representatividade racial na instituição." },
-        { name: "Diretoria de Saúde e Meio Ambiente", icon: "ph-leaf", desc: "Pedro Coelho", photo: "assets/images/gestão/coelho.jpeg", roleDesc: "Campanhas de conscientização ecológica, saúde mental e física.", bio: "Atento às questões sustentáveis e ao bem-estar integral dos estudantes." },
-        { name: "Diretoria de Arte e Cultura", icon: "ph-palette", desc: "Anna Placidus", photo: "assets/images/gestão/anna.png", roleDesc: "Promoção de expressões artísticas, mostras, debates e apresentações culturais.", bio: "Acredita na arte como principal motor de transformação social e acadêmica." },
-        { name: "Diretoria da Mulher", icon: "custom icon-mulher", desc: "Lua Cardoso", photo: "assets/images/gestão/lua.jpeg", roleDesc: "Defesa dos direitos das alunas, combate ao assédio e fomento à liderança feminina.", bio: "Feminista atuante focada na segurança e protagonismo das mulheres no campus." },
-        { name: "Diretoria de Esportes", icon: "ph-basketball", desc: "Yan Guimarães", photo: "assets/images/gestão/yan.jpeg", roleDesc: "Organização de interclasses, times acadêmicos e incentivo às práticas esportivas.", bio: "Atleta que vê no esporte uma ferramenta fundamental de disciplina e integração." }
+        { name: "Diretoria de Diversidade Étnica", icon: "ph-users-three", desc: "Alysson Teixeira", photo: "assets/images/team/chicote.jpeg", roleDesc: "Ações contra o racismo, valorização cultural e políticas afirmativas.", bio: "Liderança engajada na luta por igualdade e representatividade racial na instituição." },
+        { name: "Diretoria de Saúde e Meio Ambiente", icon: "ph-leaf", desc: "Pedro Coelho", photo: "assets/images/team/coelho.jpeg", roleDesc: "Campanhas de conscientização ecológica, saúde mental e física.", bio: "Atento às questões sustentáveis e ao bem-estar integral dos estudantes." },
+        { name: "Diretoria de Arte e Cultura", icon: "ph-palette", desc: "Anna Placidus", photo: "assets/images/team/anna.png", roleDesc: "Promoção de expressões artísticas, mostras, debates e apresentações culturais.", bio: "Acredita na arte como principal motor de transformação social e acadêmica." },
+        { name: "Diretoria da Mulher", icon: "custom icon-mulher", desc: "Lua Cardoso", photo: "assets/images/team/lua.jpeg", roleDesc: "Defesa dos direitos das alunas, combate ao assédio e fomento à liderança feminina.", bio: "Feminista atuante focada na segurança e protagonismo das mulheres no campus." },
+        { name: "Diretoria de Esportes", icon: "ph-basketball", desc: "Yan Guimarães", photo: "assets/images/team/yan.jpeg", roleDesc: "Organização de interclasses, times acadêmicos e incentivo às práticas esportivas.", bio: "Atleta que vê no esporte uma ferramenta fundamental de disciplina e integração." }
     ]
 };
 
@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="featured-content">
                             <span class="category-pill"><span class="category-dot"></span> Novidade</span>
                             <a href="${link}" target="_blank" rel="noopener noreferrer" class="featured-title">${title}</a>
-                            <div class="featured-meta">${formattedDate} • Gestão REAL</div>
+                            <div class="featured-meta">${formattedDate} ⬢ Gestão REAL</div>
                         </div>
                     `;
                     gsap.fromTo(featuredPost.parentElement, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1, ease: "expo.out" });
@@ -233,7 +233,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Scramble Text Preloader ---
     const scrambleEl = document.querySelector('.scramble-text');
     const finalTxt = scrambleEl.getAttribute('data-text');
-    const chars = '!<>-_\\/[]{}—=+*^?#_';
+    const chars = '!<>-_\\/[]{}�=+*^?#_';
     let frame = 0;
     const scrambleInterval = setInterval(() => {
         scrambleEl.innerText = finalTxt.split('').map((c, i) => {
@@ -390,4 +390,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+
+
 });
