@@ -24,6 +24,15 @@ const siteData = {
         { name: "Diretoria de Esportes", icon: "ph-basketball", desc: "Yan Guimarães", photo: "assets/images/team/diretoria-de-esportes/diretor/yan.jpeg", roleDesc: "Organização de interclasses, times acadêmicos e incentivo às práticas esportivas.", bio: "Atleta que vê no esporte uma ferramenta fundamental de disciplina e integração.", colabs: [] },
     ]};
 
+window.shareNews = async function(title, url) {
+    const shareData = { title: title, text: 'Confira esta novidade do Campus Maceió!', url: window.location.origin + '/' + url };
+    if (navigator.share) {
+        try { await navigator.share(shareData); } catch (err) {}
+    } else {
+        try { await navigator.clipboard.writeText(shareData.url); alert('Link copiado!'); } catch (err) {}
+    }
+};
+
 document.addEventListener('DOMContentLoaded', () => {
     gsap.registerPlugin(ScrollTrigger);
 
@@ -39,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
     };
 
-    function parseAndRenderNewsJSON(itemsArray) {
+        function parseAndRenderNewsJSON(itemsArray) {
         const items = itemsArray.slice(0, 8);
         if (items.length > 0) {
             if(featuredPost) featuredPost.innerHTML = '';
@@ -58,7 +67,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 let shortDesc = escapeHtml(tempDiv.textContent || "");
                 
                 let fallbackImg = "assets/images/ifal.jpeg";
-                let highResImg = link + "/@@images/image/large";
+                let highResImg = fallbackImg;
+                const tempDivImg = document.createElement("div");
+                tempDivImg.innerHTML = item.content || item.description || "";
+                const rssImg = tempDivImg.querySelector("img");
+                if (rssImg && rssImg.getAttribute("src")) {
+                    let src = rssImg.getAttribute("src");
+                    if (src.startsWith('/')) src = "https://www2.ifal.edu.br" + src;
+                    highResImg = src.replace(/@@images\/.*/, '@@images/image');
+                } else {
+                    highResImg = link + "/@@images/image/large";
+                }
+                
                 let onerrorAttr = `onerror="this.onerror=null; this.src='${fallbackImg}';" loading="lazy"`;
                 
                 const pubDate = new Date(pubDateRaw);
@@ -72,27 +92,33 @@ document.addEventListener('DOMContentLoaded', () => {
                         <img src="${highResImg}" alt="${title}" ${onerrorAttr}>
                         <div class="featured-content">
                             <span class="category-pill"><span class="category-dot"></span> Novidade</span>
-                            <a href="${link}" target="_blank" rel="noopener noreferrer" class="featured-title">${title}</a>
-                            <div class="featured-meta">${formattedDate} ⬢ Gestão REAL</div>
+                            <a href="news.html?id=${i}" class="featured-title">${title}</a>
+                            <div class="featured-meta" style="display: flex; align-items: center; gap: 15px; flex-wrap: wrap;">
+                                <span>${formattedDate} ⬢ Gestão REAL</span>
+                                <button class="btn-share-inline" onclick="shareNews('${title}', 'news.html?id=${i}'); event.preventDefault();" title="Compartilhar"><i class="ph ph-share-network"></i> Compartilhar</button>
+                            </div>
                         </div>
                     `;
                     gsap.fromTo(featuredPost.parentElement, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1, ease: "expo.out" });
                     featuredPost.innerHTML = html;
-                    featuredPost.parentElement.href = link;
-                    featuredPost.parentElement.target = "_blank";
-                    featuredPost.parentElement.rel = "noopener noreferrer";
+                    featuredPost.parentElement.href = `news.html?id=${i}`;
+                    featuredPost.parentElement.removeAttribute("target");
+                    featuredPost.parentElement.removeAttribute("rel");
                 } 
                 else if (i >= 1 && i <= 4 && latestPostsList) {
                     const el = document.createElement('a');
-                    el.href = link;
-                    el.target = "_blank";
-                    el.rel = "noopener noreferrer";
+                    el.href = `news.html?id=${i}`;
+                    el.removeAttribute("target");
+                    el.removeAttribute("rel");
                     el.className = 'latest-item';
                     el.innerHTML = `
                         <div class="latest-img-wrapper"><img src="${highResImg}" alt="${title}" ${onerrorAttr}></div>
                         <div class="latest-content">
                             <h4 class="latest-title">${title}</h4>
-                            <span class="latest-meta">${formattedDate}</span>
+                            <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap;">
+                                <span class="latest-meta">${formattedDate}</span>
+                                <button class="btn-share-inline" onclick="shareNews('${title}', 'news.html?id=${i}'); event.preventDefault();" title="Compartilhar"><i class="ph ph-share-network"></i> Compartilhar</button>
+                            </div>
                         </div>
                     `;
                     latestPostsList.appendChild(el);
@@ -100,9 +126,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 else if (i >= 5 && i <= 7 && morePostsGrid) {
                     const el = document.createElement('a');
-                    el.href = link;
-                    el.target = "_blank";
-                    el.rel = "noopener noreferrer";
+                    el.href = `news.html?id=${i}`;
+                    el.removeAttribute("target");
+                    el.removeAttribute("rel");
                     el.className = 'more-post-card';
                     el.innerHTML = `
                         <div class="more-img-wrapper"><img src="${highResImg}" alt="${title}" ${onerrorAttr}></div>
@@ -112,7 +138,10 @@ document.addEventListener('DOMContentLoaded', () => {
                             </div>
                             <h4 class="more-title">${title}</h4>
                             <p class="more-desc">${shortDesc || 'Confira os detalhes desta notícia no portal oficial do Ifal Maceió.'}</p>
-                            <span class="more-meta">${formattedDate}</span>
+                            <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap;">
+                                <span class="more-meta">${formattedDate}</span>
+                                <button class="btn-share-inline" onclick="shareNews('${title}', 'news.html?id=${i}'); event.preventDefault();" title="Compartilhar"><i class="ph ph-share-network"></i> Compartilhar</button>
+                            </div>
                         </div>
                     `;
                     morePostsGrid.appendChild(el);
@@ -122,7 +151,6 @@ document.addEventListener('DOMContentLoaded', () => {
             
             setTimeout(() => { ScrollTrigger.refresh(); }, 500);
         } else {
-            // Se o cache mostrar Nenhuma Noticia, e nós quisermos atualizar, precisamos checar novamente
             if (featuredPost) {
                 featuredPost.innerHTML = '<p style="color:var(--text-muted); padding: 20px;">Nenhuma notícia encontrada.</p>';
             }
@@ -252,39 +280,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- Scramble Text Preloader ---
-    const scrambleEl = document.querySelector('.scramble-text');
-    const finalTxt = scrambleEl.getAttribute('data-text');
-    const chars = '!<>-_\\/[]{}�=+*^?#_';
-    let frame = 0;
-    const scrambleInterval = setInterval(() => {
-        scrambleEl.innerText = finalTxt.split('').map((c, i) => {
-            if (i < frame / 3) return c;
-            return chars[Math.floor(Math.random() * chars.length)];
-        }).join('');
-        frame++;
-        if (frame / 3 >= finalTxt.length) clearInterval(scrambleInterval);
-    }, 30);
-
-    // --- Preloader Timeline ---
-    const tlLoader = gsap.timeline();
-    let counter = { value: 0 };
-    tlLoader.to('.reveal-up', { y: 0, duration: 1, ease: "expo.out" })
-        .to(counter, {
-            value: 100, duration: 2.5, ease: "power4.inOut",
-            onUpdate: () => {
-                let val = Math.round(counter.value);
-                document.getElementById('loader-counter').innerText = val < 10 ? '0' + val : val;
-                gsap.set('.preloader-progress', { width: val + "%" });
-            }
-        })
-        .to('.awwwards-preloader', { yPercent: -100, duration: 1.2, ease: "expo.inOut", delay: 0.2 })
-        .call(() => document.body.classList.remove('is-loading'))
-        .to('.editorial-hero .fade-up', { opacity: 1, y: 0, duration: 1.5, stagger: 0.2, ease: "expo.out" }, "-=0.8")
-        .from('.cinematic-img', { scale: 1.2, duration: 2.5, ease: "expo.out" }, "-=1.5");
+    // Inicia a animação da capa imediatamente (Sem Preloader)
+    document.body.classList.remove('is-loading');
+    gsap.to('.editorial-hero .fade-up', { opacity: 1, y: 0, duration: 1.5, stagger: 0.2, ease: "expo.out" });
+    gsap.from('.cinematic-img', { scale: 1.2, duration: 2.5, ease: "expo.out" });
 
     // --- 3D Tilt Effect ---
-    // Aplica interação de perspectiva em caixas sem usar cursos magnéticos
     const tiltElements = document.querySelectorAll('.tilt-effect');
     tiltElements.forEach(el => {
         el.addEventListener('mousemove', (e) => {
@@ -293,9 +294,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const y = e.clientY - rect.top;
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
-            const rotateX = ((y - centerY) / centerY) * -5; // Intensidade (max 5 graus)
+            const rotateX = ((y - centerY) / centerY) * -5;
             const rotateY = ((x - centerX) / centerX) * 5;
-
             el.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
         });
         el.addEventListener('mouseleave', () => {
@@ -303,7 +303,7 @@ document.addEventListener('DOMContentLoaded', () => {
             el.style.transition = `transform 0.5s var(--ease-out)`;
         });
         el.addEventListener('mouseenter', () => {
-            el.style.transition = `none`; // remove transição pro drag ser responsivo
+            el.style.transition = `none`;
         });
     });
 
