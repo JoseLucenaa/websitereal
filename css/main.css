@@ -572,6 +572,7 @@ i.custom.icon-mulher { display: inline-block; width: 40px; height: 40px; backgro
 }
 
 .news-article-body {
+    width: 100%;
     max-width: 1000px !important;
     margin: -80px auto 100px auto;
     position: relative;
@@ -592,6 +593,21 @@ i.custom.icon-mulher { display: inline-block; width: 40px; height: 40px; backgro
         margin-top: -40px;
         border-radius: 24px;
     }
+}
+
+.news-loading-skeleton {
+    background: linear-gradient(90deg, var(--bg-primary) 25%, rgba(0,0,0,0.05) 50%, var(--bg-primary) 75%);
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s infinite;
+    border-radius: 4px;
+}
+[data-theme="dark"] .news-loading-skeleton {
+    background: linear-gradient(90deg, var(--bg-primary) 25%, rgba(255,255,255,0.05) 50%, var(--bg-primary) 75%);
+    background-size: 200% 100%;
+}
+@keyframes skeleton-loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
 }
 
 .news-article-body p {

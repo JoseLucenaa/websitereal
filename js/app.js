@@ -24,12 +24,26 @@ const siteData = {
         { name: "Diretoria de Esportes", icon: "ph-basketball", desc: "Yan Guimarães", photo: "assets/images/team/diretoria-de-esportes/diretor/yan.jpeg", roleDesc: "Organização de interclasses, times acadêmicos e incentivo às práticas esportivas.", bio: "Atleta que vê no esporte uma ferramenta fundamental de disciplina e integração.", colabs: [] },
     ]};
 
-window.shareNews = async function(title, url) {
-    const shareData = { title: title, text: 'Confira esta novidade do Campus Maceió!', url: window.location.origin + '/' + url };
+window.shareNews = async function(link, title, event) {
+    if (event) { event.preventDefault(); event.stopPropagation(); }
+    const shareUrl = window.location.origin + window.location.pathname.replace('index.html', '') + 'news.html?link=' + encodeURIComponent(link);
+    
     if (navigator.share) {
-        try { await navigator.share(shareData); } catch (err) {}
+        navigator.share({
+            title: title || 'Notícia - GEEL',
+            text: 'Confira esta notícia no portal do GEEL!',
+            url: shareUrl
+        }).catch(err => console.log('Erro no share nativo:', err));
     } else {
-        try { await navigator.clipboard.writeText(shareData.url); alert('Link copiado!'); } catch (err) {}
+        try {
+            await navigator.clipboard.writeText(shareUrl);
+            const btn = event.currentTarget;
+            if (btn) {
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '<i class="ph ph-check"></i> Copiado!';
+                setTimeout(() => { btn.innerHTML = originalText; }, 2000);
+            }
+        } catch (err) {}
     }
 };
 

@@ -85,7 +85,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                 htmlText = await Promise.any(fetchPromises);
                 sessionStorage.setItem('cache_html_' + link, htmlText);
             } catch (err) {
-                console.log("Todos os proxies falharam.");
+                console.error("Todos os proxies falharam.", err);
+                mostrarErroBotao(bodyEl, link);
             }
         }
 
