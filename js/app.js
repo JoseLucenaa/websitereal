@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <a href="/noticia/${item.link.split('/').filter(Boolean).pop()}" class="featured-title">${title}</a>
                             <div class="featured-meta" style="display: flex; align-items: center; gap: 15px; flex-wrap: wrap;">
                                 <span>${formattedDate} ⬢ Gestão REAL</span>
-                                <button class="btn-share-inline" onclick="shareNews('${item.link}', '${item.title.replace(/'/g, "\\'")}', event)" title="Compartilhar"><i class="ph ph-share-network"></i> Compartilhar</button>
+                                <button class="btn-share-inline" onclick="event.stopPropagation(); shareNews('${item.link}', '${item.title}', event)" title="Compartilhar"><i class="ph ph-share-network"></i> Compartilhar</button>
                             </div>
                         </div>
                     `;
@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             </a>
                             <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap;">
                                 <span class="latest-meta">${formattedDate}</span>
-                                <button class="btn-share-inline" onclick="shareNews('${item.link}', '${item.title.replace(/'/g, "\\'")}', event)" title="Compartilhar"><i class="ph ph-share-network"></i> Compartilhar</button>
+                                <button class="btn-share-inline" onclick="event.stopPropagation(); shareNews('${item.link}', '${item.title}', event)" title="Compartilhar"><i class="ph ph-share-network"></i> Compartilhar</button>
                             </div>
                         </div>
                     `;
@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <p class="more-desc">${shortDesc || 'Confira os detalhes desta notícia no portal oficial do Ifal Maceió.'}</p>
                             <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap;">
                                 <span class="more-meta">${formattedDate}</span>
-                                <button class="btn-share-inline" onclick="shareNews('${item.link}', '${item.title.replace(/'/g, "\\'")}', event)" title="Compartilhar"><i class="ph ph-share-network"></i> Compartilhar</button>
+                                <button class="btn-share-inline" onclick="event.stopPropagation(); shareNews('${item.link}', '${item.title}', event)" title="Compartilhar"><i class="ph ph-share-network"></i> Compartilhar</button>
                             </div>
                         </div>
                     `;
