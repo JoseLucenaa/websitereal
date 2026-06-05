@@ -52,13 +52,13 @@ export default async function handler(req, res) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>\${title} | GEEL</title>
+    <title>${title} | GEEL</title>
     
     <meta property="og:type" content="article" />
-    <meta property="og:title" content="\${title}" />
+    <meta property="og:title" content="${title}" />
     <meta property="og:description" content="Leia esta notícia no Diário Oficial do GEEL." />
-    <meta property="og:image" content="\${imgUrl}" />
-    <meta property="og:url" content="https://geelifalmaceio.vercel.app/noticia/\${slug}" />
+    <meta property="og:image" content="${imgUrl}" />
+    <meta property="og:url" content="https://geelifalmaceio.vercel.app/noticia/${slug}" />
     <meta name="twitter:card" content="summary_large_image">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -85,11 +85,11 @@ export default async function handler(req, res) {
     <main class="news-main-content">
         <section class="news-hero parallax-section" style="padding-top: 100px;">
             <div class="news-hero-bg">
-                <img src="\${imgUrl}" alt="Capa da Notícia" class="parallax-img" style="width:100%; height:100%; object-fit:cover;">
+                <img src="${imgUrl}" alt="Capa da Notícia" class="parallax-img" style="width:100%; height:100%; object-fit:cover;">
                 <div class="news-hero-overlay" style="position:absolute; top:0; left:0; width:100%; height:100%; background: linear-gradient(to top, var(--bg-primary) 0%, transparent 100%); z-index:1;"></div>
             </div>
             <div class="news-hero-content container" style="position:relative; z-index:2; max-width:900px; margin:0 auto; padding-bottom:120px; display:flex; flex-direction:column; align-items:center;">
-                <h1 class="news-hero-title split-text" style="font-size:3rem; text-align:center;">\${title}</h1>
+                <h1 class="news-hero-title split-text" style="font-size:3rem; text-align:center;">${title}</h1>
                 <div class="news-hero-meta" style="margin-top:20px;">
                     <button class="btn-share-inline" id="share-btn">
                         <i class="ph ph-share-network"></i> Compartilhar Notícia
@@ -99,7 +99,7 @@ export default async function handler(req, res) {
         </section>
 
         <article class="news-article-body container" id="news-body" style="width:100%; max-width:1000px; margin:-80px auto 100px auto; position:relative; z-index:10; background:var(--bg-secondary); padding:80px; border-radius:24px; box-shadow:0 30px 60px rgba(0,0,0,0.04);">
-            \${articleBody}
+            ${articleBody}
         </article>
     </main>
 
