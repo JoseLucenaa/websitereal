@@ -1,4 +1,11 @@
 {
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/noticia/:slug",
+      "destination": "/api/noticia?slug=:slug"
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",

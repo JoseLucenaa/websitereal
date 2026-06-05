@@ -26,7 +26,7 @@ const siteData = {
 
 window.shareNews = async function(link, title, event) {
     if (event) { event.preventDefault(); event.stopPropagation(); }
-    const shareUrl = window.location.origin + window.location.pathname.replace('index.html', '') + 'news.html?link=' + encodeURIComponent(link);
+    const shareUrl = window.location.origin + '/noticia/' + link.split('/').filter(Boolean).pop();
     
     if (navigator.share) {
         navigator.share({
@@ -106,32 +106,34 @@ document.addEventListener('DOMContentLoaded', () => {
                         <img src="${highResImg}" alt="${title}" ${onerrorAttr}>
                         <div class="featured-content">
                             <span class="category-pill"><span class="category-dot"></span> Novidade</span>
-                            <a href="news.html?id=${i}" class="featured-title">${title}</a>
+                            <a href="/noticia/${item.link.split('/').filter(Boolean).pop()}" class="featured-title">${title}</a>
                             <div class="featured-meta" style="display: flex; align-items: center; gap: 15px; flex-wrap: wrap;">
                                 <span>${formattedDate} ⬢ Gestão REAL</span>
-                                <button class="btn-share-inline" onclick="shareNews('${title}', 'news.html?id=${i}'); event.preventDefault();" title="Compartilhar"><i class="ph ph-share-network"></i> Compartilhar</button>
+                                <button class="btn-share-inline" onclick="shareNews('${item.link}', '${item.title.replace(/'/g, "\\'")}', event)" title="Compartilhar"><i class="ph ph-share-network"></i> Compartilhar</button>
                             </div>
                         </div>
                     `;
                     gsap.fromTo(featuredPost.parentElement, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1, ease: "expo.out" });
                     featuredPost.innerHTML = html;
-                    featuredPost.parentElement.href = `news.html?id=${i}`;
+                    featuredPost.parentElement.href = '/noticia/' + item.link.split('/').filter(Boolean).pop();
                     featuredPost.parentElement.removeAttribute("target");
                     featuredPost.parentElement.removeAttribute("rel");
                 } 
                 else if (i >= 1 && i <= 4 && latestPostsList) {
                     const el = document.createElement('a');
-                    el.href = `news.html?id=${i}`;
+                    el.href = '/noticia/' + item.link.split('/').filter(Boolean).pop();
                     el.removeAttribute("target");
                     el.removeAttribute("rel");
                     el.className = 'latest-item';
                     el.innerHTML = `
                         <div class="latest-img-wrapper"><img src="${highResImg}" alt="${title}" ${onerrorAttr}></div>
                         <div class="latest-content">
-                            <h4 class="latest-title">${title}</h4>
+                            <a href="/noticia/${item.link.split('/').filter(Boolean).pop()}" style="text-decoration:none; color:inherit; display:block;">
+                                <h4 class="latest-title">${title}</h4>
+                            </a>
                             <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap;">
                                 <span class="latest-meta">${formattedDate}</span>
-                                <button class="btn-share-inline" onclick="shareNews('${title}', 'news.html?id=${i}'); event.preventDefault();" title="Compartilhar"><i class="ph ph-share-network"></i> Compartilhar</button>
+                                <button class="btn-share-inline" onclick="shareNews('${item.link}', '${item.title.replace(/'/g, "\\'")}', event)" title="Compartilhar"><i class="ph ph-share-network"></i> Compartilhar</button>
                             </div>
                         </div>
                     `;
@@ -140,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 else if (i >= 5 && i <= 7 && morePostsGrid) {
                     const el = document.createElement('a');
-                    el.href = `news.html?id=${i}`;
+                    el.href = '/noticia/' + item.link.split('/').filter(Boolean).pop();
                     el.removeAttribute("target");
                     el.removeAttribute("rel");
                     el.className = 'more-post-card';
@@ -154,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <p class="more-desc">${shortDesc || 'Confira os detalhes desta notícia no portal oficial do Ifal Maceió.'}</p>
                             <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap;">
                                 <span class="more-meta">${formattedDate}</span>
-                                <button class="btn-share-inline" onclick="shareNews('${title}', 'news.html?id=${i}'); event.preventDefault();" title="Compartilhar"><i class="ph ph-share-network"></i> Compartilhar</button>
+                                <button class="btn-share-inline" onclick="shareNews('${item.link}', '${item.title.replace(/'/g, "\\'")}', event)" title="Compartilhar"><i class="ph ph-share-network"></i> Compartilhar</button>
                             </div>
                         </div>
                     `;
